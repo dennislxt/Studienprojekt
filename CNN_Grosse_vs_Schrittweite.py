@@ -13,7 +13,7 @@ train_Batch= t.utils.data.DataLoader(Train_Data , batch_size= 64,shuffle = True)
 test_Batch = t.utils.data.DataLoader(Test_Data , batch_size= 64,shuffle = False)
 
 # Definition des CNNs für die wir die optimale Schrittweite bestimmen wollen
-class Network1(t.nn.Module):
+class CNN1(t.nn.Module):
     def __init__(self):
         super().__init__()
         self.layer1 = t.nn.Sequential(
@@ -39,7 +39,7 @@ class Network1(t.nn.Module):
         return x
 
 
-class Network2(t.nn.Module):
+class CNN2(t.nn.Module):
     def __init__(self):
         super().__init__()
         self.layer1 = t.nn.Sequential(
@@ -66,7 +66,7 @@ class Network2(t.nn.Module):
         x = self.fc2(x)
         return x
 
-class Network3(t.nn.Module):
+class CNN3(t.nn.Module):
     def __init__(self):
         super().__init__()
         self.layer1 = t.nn.Sequential(
@@ -93,7 +93,7 @@ class Network3(t.nn.Module):
         x = self.fc2(x)
         return x
 
-class Network4(t.nn.Module):
+class CNN4(t.nn.Module):
     def __init__(self):
         super().__init__()
         self.layer1 = t.nn.Sequential(
@@ -124,7 +124,7 @@ class Network4(t.nn.Module):
         x = self.fc2(x)
         return x
     
-class Network5(t.nn.Module):
+class CNN5(t.nn.Module):
     def __init__(self):
         super().__init__()
         self.layer1 = t.nn.Sequential(
@@ -207,7 +207,7 @@ Anzahl_Gewichte = [0]
 # Durchführung der Tests
 Genauigkeit_CNN1 = []
 for i in range(12):
-    model = Network5()
+    model = CNN1()
     optimizer = t.optim.Adam(model.parameters(), Schrittweiten[i])
     loss_function = t.nn.CrossEntropyLoss()
     relTest,relTrain,lTest,lTrain = training_loop(5,optimizer,model,loss_function,train_Batch,test_Batch)
@@ -216,7 +216,7 @@ print(Genauigkeit_CNN1)
 
 Genauigkeit_CNN2 = []
 for i in range(12):
-    model = Network2()
+    model = CNN2()
     optimizer = t.optim.Adam(model.parameters(), Schrittweiten[i])
     loss_function = t.nn.CrossEntropyLoss()
     relTest,relTrain,lTest,lTrain = training_loop(5,optimizer,model,loss_function,train_Batch,test_Batch)
@@ -225,7 +225,7 @@ print(Genauigkeit_CNN2)
 
 Genauigkeit_CNN3 = []
 for i in range(12):
-    model = Network3()
+    model = CNN3()
     optimizer = t.optim.Adam(model.parameters(), Schrittweiten[i])
     loss_function = t.nn.CrossEntropyLoss()
     relTest,relTrain,lTest,lTrain = training_loop(5,optimizer,model,loss_function,train_Batch,test_Batch)
@@ -234,7 +234,7 @@ print(Genauigkeit_CNN3)
 
 Genauigkeit_CNN4 = []
 for i in range(12):
-    model = Network4()
+    model = CNN4()
     optimizer = t.optim.Adam(model.parameters(), Schrittweiten[i])
     loss_function = t.nn.CrossEntropyLoss()
     relTest,relTrain,lTest,lTrain = training_loop(5,optimizer,model,loss_function,train_Batch,test_Batch)
@@ -243,7 +243,7 @@ print(Genauigkeit_CNN4)
 
 Genauigkeit_CNN5 = []
 for i in range(12):
-    model = Network5()
+    model = CNN5()
     optimizer = t.optim.Adam(model.parameters(), Schrittweiten[i])
     loss_function = t.nn.CrossEntropyLoss()
     relTest,relTrain,lTest,lTrain = training_loop(5,optimizer,model,loss_function,train_Batch,test_Batch)
