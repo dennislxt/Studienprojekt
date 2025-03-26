@@ -18,7 +18,6 @@ for i in range(100):
     loss.backward()
     optimierer.step()
 
-    print(f"Epoch {i+1}: x = {x.item():.4f}, Loss = {loss.item():.4f}")
     x_werte.append(x.item())
     loss_werte.append(loss.item())
 
